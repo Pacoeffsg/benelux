@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pascal &amp; Ale · 12–26 September 2026</title>
+<meta name="theme-color" content="#16123F">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112,600;112,700;112,800&family=Public+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#16123F;--paper:#ECEBFB;--cobalt:#2B4BF2;--vermilion:#FF4A26;--viridian:#00A37A;--gold:#FFC531;
+  --line:rgba(22,18,63,.16);--dim:#5B5786;--card:#FFFFFF;
+  --display:'Archivo',system-ui,sans-serif;
+  --body:'Public Sans',system-ui,-apple-system,sans-serif;
+  --mono:'DM Mono',ui-monospace,Menlo,monospace;
+  --accent:var(--cobalt);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);
+  font-size:16px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 20px 96px}
+header{position:sticky;top:0;z-index:30;background:var(--ink);color:var(--paper);border-bottom:3px solid var(--gold)}
+.bar{max-width:760px;margin:0 auto;padding:11px 20px;display:flex;gap:12px;align-items:baseline;justify-content:space-between}
+.bar b{font-family:var(--display);font-weight:800;font-size:15px}
+.bar span{font-family:var(--mono);font-size:11.5px;color:#B9B4EC;letter-spacing:.04em}
+.hero{padding:44px 0 30px}
+.eyebrow{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);margin:0 0 18px}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(36px,10vw,64px);line-height:1;letter-spacing:-.028em;margin:0 0 20px}
+h1 em{font-style:normal;color:var(--vermilion)}
+.lede{font-size:17.5px;line-height:1.55;max-width:52ch;margin:0 0 30px;color:#2C2769}
+.lede strong{font-weight:600}
+.strip-label{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 8px}
+.strip-label h2{font-family:var(--display);font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin:0}
+.strip-label span{font-family:var(--mono);font-size:11px;color:var(--dim)}
+.strip{display:flex;gap:3px;height:74px;margin:0 0 10px}
+.night{flex:1;border-radius:3px;position:relative;background:var(--c);display:flex;align-items:flex-end;
+  justify-content:center;padding-bottom:6px;color:#fff;font-family:var(--mono);font-size:10px;border:none;cursor:pointer;transition:transform .18s}
+.night:hover,.night:focus-visible{transform:translateY(-4px)}
+.night:focus-visible{outline:2.5px solid var(--ink);outline-offset:2px}
+.night.new::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:7px;height:7px;border-radius:50%;background:var(--gold)}
+.strip-key{display:flex;flex-wrap:wrap;gap:12px 16px;font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 14px}
+.strip-key i{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}
+.map{margin:0 0 10px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 10px}
+.map svg{display:block;width:100%;height:auto}
+.map .stop circle{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.map .bed circle{stroke:#fff;stroke-width:2.5}
+.map .lbl text{font-family:var(--mono);font-size:10.5px;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3.5px;stroke-linejoin:round}
+.map .lbl text.big{font-family:var(--display);font-weight:800;font-size:13.5px}
+.legend{display:flex;flex-wrap:wrap;gap:12px 16px;font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 40px}
+.block{margin:52px 0 0}
+.block-head{border-top:3px solid var(--accent);padding-top:12px;margin-bottom:6px}
+.block-head h2{font-family:var(--display);font-weight:800;font-size:clamp(24px,6vw,34px);letter-spacing:-.02em;margin:0;line-height:1.02}
+.block-head p{font-family:var(--mono);font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--accent);margin:5px 0 0}
+.block-note{font-size:15.5px;color:var(--dim);margin:10px 0 0;max-width:52ch}
+.days{margin-top:26px}
+.day{display:grid;grid-template-columns:46px 1fr}
+.rail{position:relative}
+.rail::before{content:"";position:absolute;left:13px;top:0;bottom:0;width:2px;background:var(--line)}
+.day:first-child .rail::before{top:22px}
+.day.last .rail::before{bottom:auto;height:22px}
+.dot{position:absolute;left:6px;top:15px;width:16px;height:16px;border-radius:50%;background:var(--paper);border:3px solid var(--accent);z-index:2}
+.dot.stay{background:var(--accent)}
+.dot.fly{border-color:var(--ink);background:var(--gold)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:0 0 10px;overflow:hidden}
+.card summary{list-style:none;cursor:pointer;padding:13px 16px;display:flex;gap:12px;align-items:baseline}
+.card summary::-webkit-details-marker{display:none}
+.card summary:focus-visible{outline:2.5px solid var(--accent);outline-offset:-3px}
+.date{font-family:var(--mono);font-size:11px;color:var(--dim);white-space:nowrap;flex:none}
+.title{font-family:var(--display);font-weight:700;font-size:17px;letter-spacing:-.01em;flex:1;line-height:1.2}
+.chev{flex:none;color:var(--dim);font-family:var(--mono);font-size:13px;transition:transform .2s}
+details[open] .chev{transform:rotate(90deg)}
+.body{padding:0 16px 16px;border-top:1px solid var(--line);margin-top:2px;padding-top:13px}
+.body p{margin:0 0 11px}.body p:last-child{margin-bottom:0}
+.body strong{font-weight:600}
+.body a,.flag a{color:inherit;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2.5px;text-decoration-color:var(--accent)}
+.body a:hover{color:var(--accent)}
+.body h4{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin:15px 0 6px;font-weight:500}
+.body h4:first-child{margin-top:0}
+.k{display:inline-block;width:16px;height:16px;border-radius:4px;margin-right:5px;vertical-align:-3px;position:relative}
+.k::before{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:9.5px;font-weight:500;color:#fff}
+.k.a{background:#2B4BF2}.k.a::before{content:"A"}
+.k.o{background:#00A37A}.k.o::before{content:"O"}
+.k.e{background:#FF4A26}.k.e::before{content:"E"}
+.k.s{background:#FFC531}.k.s::before{content:"S";color:#16123F}
+.k.h{background:#16123F}.k.h::before{content:"H"}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.chip{font-family:var(--mono);font-size:11px;padding:3.5px 9px;border-radius:99px;border:1px solid var(--line);color:var(--dim);white-space:nowrap}
+.chip.move{border-color:var(--accent);color:var(--accent)}
+.chip.warn{background:var(--gold);border-color:var(--gold);color:var(--ink)}
+.flag{display:block;background:#FFF6DC;border-left:3px solid var(--gold);padding:10px 12px;margin:12px 0 0;font-size:15px;border-radius:0 6px 6px 0}
+.flag b{font-family:var(--display);font-weight:700;font-size:11px;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:2px}
+.tonight{margin-top:15px;padding-top:12px;border-top:1px dashed var(--line);font-size:14.5px}
+.tonight b{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:3px;font-weight:400}
+.links{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.links a{font-family:var(--mono);font-size:11px;padding:4px 10px;border-radius:99px;border:1px solid var(--accent);color:var(--accent);text-decoration:none;white-space:nowrap}
+.links a:hover{background:var(--accent);color:#fff}
+.budget{margin:56px 0 0}
+.btable{background:var(--card);border:1px solid var(--line);border-radius:10px;overflow:hidden;margin-top:18px}
+.brow{display:flex;justify-content:space-between;gap:12px;padding:11px 16px;border-top:1px solid var(--line);font-size:15px}
+.brow:first-child{border-top:none}
+.brow span:last-child{font-family:var(--mono);font-size:13px;white-space:nowrap}
+.brow.paid{color:var(--dim)}
+.brow.total{background:var(--ink);color:var(--paper);font-weight:600}
+.brow.total span:last-child{color:var(--gold);font-size:15px}
+.brow.head{background:#F4F3FD;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+.stays{margin:56px 0 0}
+.stay{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:0 0 10px}
+.stay h3{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:0 0 6px;font-weight:400}
+.stay .pick{font-family:var(--display);font-weight:700;font-size:17px;margin:0 0 4px}
+.stay p{margin:0 0 6px;font-size:15px}
+.stay .alt{font-size:14px;color:var(--dim);margin:0}
+.book{margin:56px 0 0;background:var(--ink);color:var(--paper);border-radius:14px;padding:26px 22px}
+.book h2{font-family:var(--display);font-weight:800;font-size:26px;letter-spacing:-.02em;margin:0 0 4px}
+.book>p{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin:0 0 18px}
+.task{display:flex;gap:12px;align-items:flex-start;padding:11px 0;border-top:1px solid rgba(236,235,251,.16)}
+.task input{appearance:none;flex:none;width:20px;height:20px;margin:2px 0 0;border-radius:5px;border:2px solid #6E68B8;background:transparent;cursor:pointer;position:relative}
+.task input:checked{background:var(--gold);border-color:var(--gold)}
+.task input:checked::after{content:"";position:absolute;left:6px;top:2px;width:5px;height:10px;border:solid var(--ink);border-width:0 2.5px 2.5px 0;transform:rotate(42deg)}
+.task input:focus-visible{outline:2.5px solid var(--gold);outline-offset:2px}
+.task label{flex:1;font-size:15.5px;line-height:1.45;cursor:pointer}
+.task label i{display:block;font-style:normal;font-family:var(--mono);font-size:11px;color:#B9B4EC;margin-top:2px}
+.task input:checked+label{opacity:.45;text-decoration:line-through}
+.tgroup{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin:22px 0 2px;padding-top:14px;border-top:1px solid rgba(236,235,251,.28)}
+.tgroup:first-child{margin-top:0;padding-top:0;border-top:none}
+.tgroup em{font-style:normal;color:#B9B4EC;letter-spacing:.04em;text-transform:none;display:block;margin-top:3px;font-size:11px}
+.saved{font-family:var(--mono);font-size:11px;color:#B9B4EC;margin:16px 0 0;min-height:1.2em}
+footer{margin-top:44px;font-family:var(--mono);font-size:11.5px;color:var(--dim);line-height:1.7}
+@media (max-width:520px){
+  body{font-size:15.5px}.strip{height:60px}.night{font-size:9px}
+  .day{grid-template-columns:34px 1fr}.rail::before{left:9px}
+  .dot{left:2px;width:14px;height:14px;top:16px}.title{font-size:16px}
+}
+.reveal{opacity:0;transform:translateY(10px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .5s,transform .5s}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none}.night{transition:none}}
+</style>
+</head>
+<body>
+
+<header><div class="bar"><b>Outdoors, water &amp; facades</b><span>12–26 SEP 2026 · 14 NIGHTS</span></div></header>
+
+<div class="wrap">
+
+<section class="hero">
+  <p class="eyebrow">Pascal &amp; Ale · EK413 SYD → DXB → AMS</p>
+  <h1>Boats, bikes, <em>and buildings from outside.</em></h1>
+  <p class="lede"><strong>No museum tickets anywhere in this plan.</strong> You still stand in front of everything worth standing in front of — you just don't queue to go in. Days are built around water, wheels and streets: five canal and lake boats, three days on bikes, and one road trip south to a concrete chapel in a field.</p>
+
+  <div class="strip-label"><h2>The fortnight</h2><span>gold dot = new bed</span></div>
+  <div class="strip" id="strip"></div>
+  <div class="strip-key">
+    <span><i style="background:#2B4BF2"></i>Antwerp · free flat</span>
+    <span><i style="background:#FF4A26"></i>Road trips · car</span>
+    <span><i style="background:#00A37A"></i>Haarlem · trains</span>
+  </div>
+
+  <div class="strip-label"><h2>The route</h2><span>large dot = you sleep there</span></div>
+  <figure class="map">
+  <svg viewBox="0 0 340 450" role="img" aria-label="Schematic route map. Antwerp is the base, with dashed train day trips to Rotterdam, Ghent, and a combined Bruges and Brussels loop. A red car route runs south to the Bruder Klaus chapel, a night on the Mosel, the Saar loop and Metz, then north to Utrecht, with spurs to Kasteel de Haar, Houten and the Bolwoningen. From Utrecht the car continues to Zeewolde, Giethoorn, Groningen and Zaanse Schans before returning to Antwerp. A green train line runs Antwerp to Haarlem, with Amsterdam fifteen minutes away.">
+    <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <!-- flights -->
+      <path d="M132 140 Q162 218 110 292" stroke="#FFC531" stroke-width="2.5" stroke-dasharray="1 6"/>
+      <path d="M120 100 L132 140" stroke="#FFC531" stroke-width="2.5" stroke-dasharray="1 6"/>
+      <!-- day trips from Antwerp -->
+      <path d="M110 292 L85 215 M110 292 L42 322 M110 292 L32 272 L112 342 L110 292"
+            stroke="#2B4BF2" stroke-width="2" stroke-dasharray="5 5" opacity=".8"/>
+      <!-- car: south then north -->
+      <path d="M110 292 L240 338 L292 372 L270 410 L218 424 L190 178" stroke="#FF4A26" stroke-width="2.8"/>
+      <path d="M190 178 L218 132 L248 88 L305 45 L75 60 L110 292" stroke="#FF4A26" stroke-width="2.8"/>
+      <path d="M190 178 L150 170 M190 178 L205 208 M190 178 L232 250"
+            stroke="#FF4A26" stroke-width="2" stroke-dasharray="4 4"/>
+      <!-- trains north -->
+      <path d="M110 292 L120 100" stroke="#00A37A" stroke-width="2.8"/>
+      <path d="M120 100 L168 100" stroke="#00A37A" stroke-width="2" stroke-dasharray="5 5"/>
+    </g>
+    <g class="stop">
+      <circle cx="85" cy="215" r="4"/><circle cx="42" cy="322" r="4"/><circle cx="32" cy="272" r="4"/>
+      <circle cx="112" cy="342" r="4"/><circle cx="240" cy="338" r="4"/><circle cx="270" cy="410" r="4"/><circle cx="150" cy="170" r="4"/>
+      <circle cx="205" cy="208" r="4"/><circle cx="232" cy="250" r="4"/><circle cx="218" cy="132" r="4"/>
+      <circle cx="248" cy="88" r="4"/><circle cx="75" cy="60" r="4"/><circle cx="168" cy="100" r="4"/>
+    </g>
+    <g class="bed">
+      <circle cx="110" cy="292" r="7" fill="#2B4BF2"/>
+      <circle cx="218" cy="424" r="7" fill="#FF4A26"/>
+      <circle cx="292" cy="372" r="7" fill="#FF4A26"/>
+      <circle cx="190" cy="178" r="7" fill="#FF4A26"/>
+      <circle cx="305" cy="45" r="7" fill="#FF4A26"/>
+      <circle cx="120" cy="100" r="7" fill="#00A37A"/>
+    </g>
+    <path d="M132 133 l7 7 -7 7 -7 -7 z" fill="#FFC531" stroke="#16123F" stroke-width="1.5"/>
+    <g class="lbl">
+      <text x="296" y="42" text-anchor="end" class="big">GRONINGEN · 1</text>
+      <text x="256" y="92">Giethoorn</text>
+      <text x="226" y="136">Zeewolde</text>
+      <text x="75" y="48" text-anchor="middle">Zaanse Schans</text>
+      <text x="111" y="97" text-anchor="end" class="big">HAARLEM · 1</text>
+      <text x="177" y="97">Amsterdam</text>
+      <text x="141" y="145">Schiphol</text>
+      <text x="199" y="175" class="big">UTRECHT · 3</text>
+      <text x="142" y="167" text-anchor="end">de Haar</text>
+      <text x="214" y="212">Houten</text>
+      <text x="241" y="254">Bolwoningen</text>
+      <text x="76" y="212" text-anchor="end">Rotterdam</text>
+      <text x="119" y="296" class="big">ANTWERP · 7</text>
+      <text x="24" y="269" text-anchor="end">Bruges</text>
+      <text x="34" y="326" text-anchor="end">Ghent</text>
+      <text x="112" y="359" text-anchor="middle">Brussels</text>
+      <text x="248" y="341">Bruder Klaus</text>
+      <text x="284" y="369" text-anchor="end" class="big">MOSEL · 1</text>
+      <text x="278" y="414">Saar loop</text>
+      <text x="209" y="428" text-anchor="end" class="big">METZ · 1</text>
+    </g>
+  </svg>
+  </figure>
+  <div class="strip-key">
+    <span><i style="background:#FFC531"></i>Flights</span>
+    <span><i style="background:#2B4BF2"></i>Trains from Antwerp</span>
+    <span><i style="background:#FF4A26"></i>Car</span>
+    <span><i style="background:#00A37A"></i>Trains</span>
+    <span>Dashed = out and back same day.</span><span>Big dot + number = nights slept there.</span>
+  </div>
+
+  <div class="strip-label"><h2>How to read a day</h2><span>markers, not jargon</span></div>
+  <div class="legend">
+    <span><i class="k a"></i>Building — from outside</span>
+    <span><i class="k o"></i>Outdoors &amp; activities</span>
+    <span><i class="k e"></i>Eat</span>
+    <span><i class="k s"></i>Shop &amp; markets</span>
+    <span><i class="k h"></i>Where you sleep</span>
+  </div>
+</section>
+
+<!-- BLOCK 1 -->
+<section class="block" style="--accent:var(--cobalt)" id="b1">
+  <div class="block-head"><h2>Antwerp base</h2><p>Sat 12 – Fri 18 Sep · 6 nights · free · trains</p></div>
+  <p class="block-note">Unpack once. Bruges and Brussels now share a day, which frees the time for the road trip south.</p>
+  <div class="days">
+
+    <div class="day reveal"><div class="rail"><span class="dot fly"></span></div>
+    <details class="card" id="d1"><summary><span class="date">SAT 12</span><span class="title">Land, and get to the base</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip">AMS 13:15</span><span class="chip move">Eurostar 1h05 · IC 1h45</span></div>
+      <h4>Afternoon</h4><p>Through by about 14:00. Trains go from Schiphol Plaza under the terminal. Eurostar is 1h05 with a reserved seat booked before you fly; the hourly IC is 1h45 and you buy it at the machine.</p>
+      <h4>Evening</h4><p>Plan nothing. Walk to the Grote Markt, eat early, sleep by nine.</p>
+      <p>Before you leave the station, go to the lowest platform level and look up — <i class="k a"></i><strong>Antwerpen-Centraal</strong> stacks four levels of track inside a 1905 stone hall, and it's free.</p>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat.</div>
+    </div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d2"><summary><span class="date">SUN 13</span><span class="title">Open Monumentendag, and the antiques street</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip warn">free · one day only</span></div>
+      <h4>All day</h4><p>The one day of the year this rule bends in your favour: 800+ monuments across Flanders open <strong>free</strong>, including buildings shut every other day. The <i class="k a"></i><strong>Bourla theatre</strong> opens completely — stage machinery, backstage, the lot — on free guided tours.</p>
+      <span class="flag"><b>Do this by 20 August</b>Programme live Thu 20 Aug, 11:00 — <a href="https://www.openmonumentendag.be/">openmonumentendag.be</a>. Bourla tours must be reserved: <a href="https://toneelhuis.be/nl/programma/open-monumentendag-2026/">toneelhuis.be</a>.</span>
+      <h4>Afternoon</h4><p><i class="k s"></i><strong>Kloosterstraat</strong> — a street of antique and mid-century dealers, open Sundays when much of the city isn't. From about 13:00.</p>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat.</div>
+    </div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d3"><summary><span class="date">MON 14</span><span class="title">Antwerp on foot and under the river</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip">walking</span><span class="chip">tunnel</span><span class="chip eat">Meat Factory</span></div>
+      <h4>Morning</h4><p>Museums shut on Mondays, which costs you nothing now. <i class="k s"></i><strong>Het Modepaleis</strong>, <i class="k s"></i><strong>Ann Demeulemeester</strong>, <i class="k s"></i><strong>Graanmarkt 13</strong>, <i class="k s"></i><strong>Verso</strong>.</p>
+      <h4>Afternoon</h4><p>Tram out to <i class="k a"></i><strong>Cogels-Osylei</strong> — a whole street of art nouveau villas, free, outdoors, and better than most museum interiors. Then the <i class="k a"></i><strong>Port House</strong> from the quay.</p>
+      <p><i class="k o"></i><strong>Sint-Anna tunnel:</strong> ride the 1933 wooden escalators 31 metres down and walk the tube under the Scheldt. Come up on the left bank, where the whole skyline lines up across the water. Free. Or take Velo share bikes through and ride the far quays.</p>
+      <h4>Evening</h4><p><i class="k e"></i>Meat Factory on the Grote Markt — Ciro's and Black Smoke are shut Mondays.</p>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat.</div>
+    </div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d4"><summary><span class="date">TUE 15</span><span class="title">Bruges and Brussels, one day</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">1h25 → 1h → 50m</span><span class="chip">boat</span><span class="chip warn">long day</span></div>
+      <h4>Morning · Bruges</h4><p>First train, there by 09:00 — Bruges before ten is a different city. Walk the Markt and the Burg, then the <i class="k o"></i><strong>canal boat</strong>, thirty minutes, which is the correct way to see Bruges and takes a fraction of the time a museum would. The Begijnhof and the Minnewater on the way back to the station.</p>
+      <h4>Afternoon · Brussels</h4><p>Bruges to Brussels is an hour, direct. The <i class="k a"></i><strong>Horta Museum</strong> house from the street in Saint-Gilles, the <i class="k a"></i><strong>Old England building</strong>, the Grand Place, and <i class="k s"></i><strong>Rue Antoine Dansaert</strong> for Belgian designers. Fifty minutes home.</p>
+      <span class="flag"><b>What this costs you</b>Merging the two means <strong>the Damme bike ride is gone</strong> — 7km of flat canal path out of Bruges that was the best afternoon of the Belgian week. If you'd rather have it back, split these again and drop Brussels; you'll see Horta's exteriors nowhere else, but you'll be on a bike instead.</span>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat.</div>
+    </div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d5"><summary><span class="date">WED 16</span><span class="title">Ghent by boat and bike</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">train 1h</span><span class="chip">boat + bikes</span><span class="chip eat">Mémé Gusta</span></div>
+      <h4>Morning</h4><p>The <i class="k o"></i><strong>Leie boat</strong> from the Graslei, forty minutes — the only way to see how the guild houses meet the water. Then walk the Graslei and Korenlei and the outside of <i class="k a"></i><strong>St Bavo's</strong> and <i class="k a"></i><strong>Gravensteen</strong>; the castle looks better from the bridge than from inside anyway.</p>
+      <h4>Afternoon</h4><p>Hire bikes — Ghent is the most cyclable city in Belgium and almost entirely car-free in the centre. Ride out along the Leie through <i class="k o"></i><strong>Citadelpark</strong> and down the towpath as far as you feel like, then back through the student quarter.</p>
+      <h4>Evening</h4><p><i class="k e"></i><strong>Mémé Gusta</strong> for stoofvlees and vol-au-vent. Book. Skip the shrimp croquettes.</p>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat.</div>
+    </div></details></div>
+
+    <div class="day reveal last"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d6"><summary><span class="date">THU 17</span><span class="title">Rotterdam — water taxi and skyline</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">train 1h05 each way</span><span class="chip">water taxi</span><span class="chip eat">Black Smoke</span></div>
+      <h4>Morning</h4><p><i class="k a"></i><strong>Van Nelle Fabriek</strong> from the outside. Brinkman and Van der Vlugt, 1931 — the glass curtain wall and the elevated conveyor bridges read perfectly from the canal path and the approach road, and no tour is needed for the thing that actually matters. It's a working office park; walk the perimeter.</p>
+      <h4>Afternoon</h4><p>The <i class="k o"></i><strong>water taxi</strong> across the Maas — fast yellow boats, a few euros, the best cheap thrill in the Netherlands. Then <i class="k a"></i><strong>Depot Boijmans</strong>, whose mirrored bowl is the whole point and is free to look at, the <i class="k a"></i><strong>Markthal</strong> (walk straight in, no ticket), the Cube Houses and the Erasmus Bridge on foot.</p>
+      <h4>Evening</h4><p><i class="k e"></i><strong>Black Smoke sits inside the Van Nelle Fabriek</strong> — so you get the interior after all, with brisket. From 17:00; eat at 17:30, 19:30 train, home by 20:45.</p>
+      <div class="tonight"><b>Tonight · Antwerp</b>The free flat. Car in the morning.</div>
+    </div></details></div>
+
+  </div>
+</section>
+
+<!-- BLOCK 2 -->
+<section class="block" style="--accent:var(--vermilion)" id="b2">
+  <div class="block-head"><h2>South: the chapel and Metz</h2><p>Fri 18 – Sun 20 Sep · 2 nights · car</p></div>
+  <p class="block-note">One field chapel, one Mosel valley, one Shigeru Ban roof. You don’t come back to Antwerp — you carry on north to Utrecht, which is what frees a day for Efteling.</p>
+  <div class="days">
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d7"><summary><span class="date">FRI 18</span><span class="title">Bruder Klaus, then down the Mosel</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">2h45 + 1h45</span><span class="chip">15 min walk</span></div>
+      <h4>Morning</h4><p>Collect the car at 07:30. Antwerp to Wachendorf is 2h45.</p>
+      <h4>Midday</h4><p><i class="k a"></i><strong>Bruder Klaus Field Chapel.</strong> Park in the signposted lot on the edge of the village — there is no road to it — then walk 10 to 15 minutes up a gentle farm track through the fields. That walk is part of the building.</p>
+      <p>Zumthor poured rammed concrete in 24 layers around 112 tree trunks leaned together like a tipi, then burned the timber out. The interior is charred, ridged and smells of it. No windows: light comes through hundreds of small glass plugs and a single open oculus, so rain falls onto the floor and stays there. Free to enter, open 10:00–17:00, closed Mondays, season ends 1 October — <a href="https://www.eifel.info/en/pois/bruder-klaus-kapelle">directions</a>.</p>
+      <p>It's a working chapel and people come to pray. Twenty quiet minutes, then walk back down.</p>
+      <span class="flag"><b>Low-emission sticker</b>If you route through Cologne, the city runs an Umweltzone and a Belgian-plated hire car needs the green sticker. Ask at the rental desk before you leave.</span>
+      <h4>Afternoon</h4><p>South to the <strong>Mosel</strong>, 1h45. <i class="k o"></i><strong>Cochem</strong> for the open chairlift up to the Pinnerkreuz — the whole bend of the valley with the vineyards falling away — then fifteen minutes to <i class="k o"></i><strong>Beilstein</strong>, 150 people, a ruined castle and vines to the water's edge. Late September is picking season.</p>
+      <h4>Evening</h4><p>Eat on the vine-shaded terrace at Haus Lipmann over the river.</p>
+      <div class="tonight"><b>Tonight · Beilstein or Cochem</b>Tiny village, few beds — book early. Entire place, target €150.
+      <div class="links"><a href="https://www.airbnb.com/s/Cochem--Germany/homes?checkin=2026-09-18&checkout=2026-09-19&adults=2&price_min=110&price_max=200&room_types%5B%5D=Entire%20home%2Fapt&guest_favorite=true&selected_filter_order%5B%5D=room_types%3AEntire%20home%2Fapt&selected_filter_order%5B%5D=guest_favorite%3Atrue&update_selected_filters=true">Airbnb 18–19 Sep</a><a href="https://www.booking.com/searchresults.html?ss=Beilstein+Mosel&checkin=2026-09-18&checkout=2026-09-19&group_adults=2&no_rooms=1">Hotels</a></div></div>
+    </div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d8"><summary><span class="date">SAT 19</span><span class="title">Trier, the Saar loop, Metz</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">1h + 30m + 25m + 1h</span><span class="chip">treetop walk</span></div>
+      <h4>Morning</h4><p><i class="k a"></i><strong>Trier</strong> — the Porta Nigra is the largest Roman city gate north of the Alps and reads entirely from the square in front of it. An hour, outside, free.</p>
+      <h4>Midday</h4><p><i class="k o"></i><strong>Saarburg</strong>, 30 minutes on, where a twenty-metre waterfall drops straight through the middle of the old town. Lunch here.</p>
+      <h4>Afternoon</h4><p>The <i class="k o"></i><strong>Saarschleife</strong>, 25 minutes further — the river doubles back on itself in a horseshoe, and a 1,250m treetop walkway runs out to a 42m tower above the bend. Step-free the whole way, open daily until 31 October, and it is an activity rather than a viewpoint. <a href="https://treetop-walks.com/saarschleife/">treetop-walks.com</a>. Take windproof layers; it's exposed.</p>
+      <h4>Evening</h4><p>Metz, an hour. Walk the <i class="k a"></i><strong>Centre Pompidou-Metz</strong> parvis at dusk — Shigeru Ban's woven hexagonal timber roof is lit from within and reads better from outside after dark than it does from inside in daylight. Then the old town and Place Saint-Louis.</p>
+      <div class="tonight"><b>Tonight · Metz</b>Entire place near Place Saint-Louis, target €140. Filter for parking — the centre is pedestrianised.
+      <div class="links"><a href="https://www.airbnb.com/s/Metz--France/homes?checkin=2026-09-19&checkout=2026-09-20&adults=2&price_min=100&price_max=180&room_types%5B%5D=Entire%20home%2Fapt&guest_favorite=true&selected_filter_order%5B%5D=room_types%3AEntire%20home%2Fapt&selected_filter_order%5B%5D=guest_favorite%3Atrue&update_selected_filters=true">Airbnb 19–20 Sep</a><a href="https://www.booking.com/searchresults.html?ss=Metz&checkin=2026-09-19&checkout=2026-09-20&group_adults=2&no_rooms=1">Hotels</a></div></div>
+    </div></details></div>
+
+    <div class="day reveal last"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d9"><summary><span class="date">SUN 20</span><span class="title">Metz to Utrecht</span><span class="chev">›</span></summary><div class="body"><div class="chips"><span class="chip move">4h</span><span class="chip">wharf cellars</span></div><h4>Morning</h4><p>Metz slowly before the drive: the <i class="k a"></i><strong>cathedral</strong> from the square — more stained glass than any Gothic church in France, Chagall windows included, and free to walk into — then the <i class="k o"></i><strong>Moselle islands</strong> and the covered market.</p><h4>Afternoon</h4><p>Four hours north to <strong>Utrecht</strong>. You skip the Antwerp night that used to sit here — that’s what buys the Efteling day.</p><h4>Evening</h4><p>Utrecht is the surprise of this trip and nobody plans it. The <i class="k o"></i><strong>Oudegracht</strong> runs a full storey below street level, with medieval wharf cellars opening straight onto the water and terraces along them — no other Dutch city has this. The <i class="k a"></i><strong>Dom Tower</strong> stands detached from its church: the nave collapsed in a 1674 storm and was never rebuilt, so there’s a public square where the middle of the cathedral used to be. Free, outdoors, and the best building story in the country.</p><p>Eat on the wharf.</p><div class="tonight"><b>Tonight · Utrecht, night 1 of 3</b>Central, near the Oudegracht. Entire place, target €160. Three nights in one bed — and you’ll want parking, so filter for it.<div class="links"><a href="https://www.airbnb.com/s/Utrecht--Netherlands/homes?checkin=2026-09-20&checkout=2026-09-23&adults=2&price_min=110&price_max=200&room_types%5B%5D=Entire%20home%2Fapt&guest_favorite=true&selected_filter_order%5B%5D=room_types%3AEntire%20home%2Fapt&selected_filter_order%5B%5D=guest_favorite%3Atrue&update_selected_filters=true">Airbnb 20–23 Sep</a><a href="https://www.booking.com/searchresults.html?ss=Utrecht&checkin=2026-09-20&checkout=2026-09-23&group_adults=2&no_rooms=1">Hotels</a></div></div></div></details></div>
+
+  </div>
+</section>
+
+<!-- BLOCK 3 -->
+<section class="block" style="--accent:var(--vermilion)" id="b3">
+  <div class="block-head"><h2>North: the Dutch run</h2><p>Sun 20 – Thu 24 Sep · 4 nights · car · ends in Antwerp</p></div>
+  <p class="block-note">Everything from your screenshots, plus a day at Efteling. Three nights in Utrecht without moving, then north to Groningen and across to Haarlem.</p>
+  <div class="days">
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d10"><summary><span class="date">MON 21</span><span class="title">Castle, coloured houses, spheres</span><span class="chev">›</span></summary><div class="body"><div class="chips"><span class="chip move">car · 2h driving</span><span class="chip">bikes at Houten</span></div><h4>Morning</h4><p><i class="k a"></i><strong>Kasteel de Haar</strong>, 30 minutes out — the largest castle in the Netherlands, rebuilt 1892–1907 by Pierre Cuypers. <strong>Buy the gardens-only ticket:</strong> the park, the moats and the formal parterres are the better half, and the interior is normally shut in September anyway while the Van Zuylen family are in residence. <a href="https://www.kasteeldehaar.nl/en/plan-je-bezoek/praktische-informatie/praktische-informatieopeningstijden/">Check the hours</a>.</p><h4>Midday</h4><p><i class="k o"></i><strong>Rietplas, Houten</strong>, 30 minutes south. Gabled houses in flat primary colours standing straight out of the water. Walk the lake edge — and Houten is the most famously bike-planned town in the Netherlands, so if you want an hour on wheels, take it here.</p><h4>Afternoon</h4><p><i class="k a"></i><strong>Bolwoningen, ’s-Hertogenbosch</strong>, 30 minutes on. Fifty spherical concrete houses by Dries Kreijkamp, 1984 — the only estate of its kind anywhere. Lived-in social housing: you look from the pavement, take the photographs and go. Thirty minutes.</p><p>Then walk the old centre of Den Bosch and the <i class="k a"></i><strong>St John’s Cathedral</strong> exterior — the best Gothic in the country, and the flying buttresses carry stone figures riding them like a procession.</p><h4>Evening</h4><p>Back to Utrecht, an hour. Early night — tomorrow starts at ten.</p><div class="tonight"><b>Tonight · Utrecht, night 2 of 3</b>Same place.</div></div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot"></span></div>
+    <details class="card" id="d11"><summary><span class="date">TUE 22</span><span class="title">Efteling</span><span class="chev">›</span></summary><div class="body"><div class="chips"><span class="chip move">50 min from Utrecht</span><span class="chip warn">Tuesday = cheapest + quietest</span><span class="chip">10:00–18:00</span></div><h4>Why Tuesday</h4><p>You guessed right, and Tuesday beats Wednesday. Efteling runs <strong>dynamic pricing</strong> — the fare tracks expected crowds, so the quiet day and the cheap day are the same day. September sits outside every Dutch school holiday (autumn half-term isn’t until mid-October), which puts the whole week in the cheapest band.</p><p>Tuesday edges Wednesday for one local reason: <strong>Dutch primary schools finish at midday on Wednesdays</strong>, so Wednesday afternoons pick up families that Tuesday never sees. Crowd trackers put Tuesdays among the quietest days of the week in low season.</p><h4>The day</h4><p>Open 10:00–18:00 in September. Be at the gate for opening — the first two hours have the shortest queues of the day by a wide margin, whatever the season. Do <i class="k o"></i><strong>Baron 1898</strong>, <i class="k o"></i><strong>Symbolica</strong> and <i class="k o"></i><strong>Danse Macabre</strong> first while everyone else is still buying coffee, then slow down.</p><p>Kaatsheuvel is 50 minutes from Utrecht by car. Parking is €15, paid separately.</p><span class="flag"><b>Book online, and book early</b>Gate prices run €10–15 per person above online ones, and the dynamic fare climbs as the date fills. Buying now, for a Tuesday in September, is the cheapest this ticket will ever be — expect the low end of the range rather than the peak. Book direct at efteling.com.</span><h4>Evening</h4><p>Back to Utrecht for the third night. Nothing to pack, nothing to move.</p><div class="tonight"><b>Tonight · Utrecht, night 3 of 3</b>Same place.</div></div></details></div>
+
+    <div class="day reveal"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d12"><summary><span class="date">WED 23</span><span class="title">Pancakes, Giethoorn, Groningen</span><span class="chev">›</span></summary>
+    <div class="body">
+      <div class="chips"><span class="chip move">45m + 1h15 + 1h30</span><span class="chip">whisper boat</span><span class="chip warn">sunset 19:30</span></div>
+      <h4>Late morning</h4><p><i class="k e"></i><strong>Hans &amp; Grietje, Zeewolde</strong> — 45 minutes north, on the edge of the Harderbos. Pancakes inside a crooked witch's house where the tables turn, the floors tilt and the ceiling is bewitched, built new in 2016 by two former dairy farmers. Book a table and go before 11:00; it's a family play park and it fills.</p>
+      <h4>Midday</h4><p><i class="k o"></i><strong>Giethoorn</strong>, 1h15 on. A village with no roads — just canals, footbridges and thatched farmhouses on islands. <strong>Hire your own whisper boat</strong> (silent electric, no licence needed) for two hours and drive yourselves; the guided barges go where everyone else goes. This is the single best outdoor activity in the Netherlands and it replaces Breklenkamp, which was a farmhouse in a field with nothing to do.</p>
+      <h4>Evening</h4><p>Groningen, 1h30 north. Straight to <i class="k o"></i><strong>Reitdiephaven</strong> for sunset, about 19:30 — tall narrow gabled houses in deep reds, oranges and blues along a marina, doubled exactly in still water. That hour is the entire reason this place is on your list.</p>
+      <div class="tonight"><b>Tonight · Groningen</b>Central, entire place, target €140. A student city — good value, lively midweek.
+      <div class="links"><a href="https://www.airbnb.com/s/Groningen--Netherlands/homes?checkin=2026-09-23&checkout=2026-09-24&adults=2&price_min=100&price_max=180&room_types%5B%5D=Entire%20home%2Fapt&guest_favorite=true&selected_filter_order%5B%5D=room_types%3AEntire%20home%2Fapt&selected_filter_order%5B%5D=guest_favorite%3Atrue&update_selected_filters=true">Airbnb 23–24 Sep</a><a href="https://www.booking.com/searchresults.html?ss=Groningen&checkin=2026-09-23&checkout=2026-09-24&group_adults=2&no_rooms=1">Hotels</a></div></div>
+    </div></details></div>
+
+    <div class="day reveal last"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d13"><summary><span class="date">THU 24</span><span class="title">Windmills, then back to Antwerp</span><span class="chev">›</span></summary><div class="body"><div class="chips"><span class="chip move">2h + 2h30</span><span class="chip">last driving day</span></div><h4>Morning</h4><p>Away by 08:30. Two hours south-west to <i class="k o"></i><strong>Zaanse Schans</strong> — working windmills along the river, green timber houses, cheese and clog workshops. The village is free and open; a couple of mills charge two or three euros to climb inside, and the one grinding pigment is the one to pick. You’ll be there by 10:30, well before the coaches.</p><h4>Afternoon</h4><p>Two and a half hours south to <strong>Antwerp</strong>. Drop the car where you picked it up — same city, so no cross-border drop fee, which is worth about €200 on its own.</p><p>You’re back by three with nothing left to drive and nothing left to organise.</p><h4>Evening</h4><p><strong>Dinner with your uncle.</strong> Ten nights of his flat is the reason this trip fit the budget at all, and arriving back with a boot full of Mosel Riesling and Zaanse cheese is the right way to say it. <i class="k e"></i>Ciro’s or <i class="k e"></i>Le Steak ’17 if you’d rather go out.</p><div class="tonight"><b>Tonight · Antwerp</b>The free flat, one last night. Confirm this night is in the block when you confirm the first six.</div></div></details></div>
+
+  </div>
+</section>
+
+<!-- BLOCK 4 -->
+<section class="block" style="--accent:var(--viridian)" id="b4">
+  <div class="block-head"><h2>Amsterdam by day</h2><p>Fri 25 – Sat 26 Sep · one night in Haarlem</p></div>
+  <p class="block-note">One last hop north after the goodbyes. Two half-days in Amsterdam and a Haarlem market morning, then Schiphol — thirty minutes away.</p>
+  <div class="days">
+
+    <div class="day reveal last"><div class="rail"><span class="dot stay"></span></div>
+    <details class="card" id="d14"><summary><span class="date">FRI 25 – SAT 26</span><span class="title">North again: Amsterdam, then home</span><span class="chev">›</span></summary><div class="body"><div class="chips"><span class="chip move">Antwerp → Haarlem 2h15</span><span class="chip">cruise 19:00</span><span class="chip warn">EK150 dep 22:00</span></div><h4>Friday morning · the last move</h4><p>Goodbyes, then the direct train north. Antwerp to Haarlem is about 2h15 via Amsterdam — one change, and you’re dropping bags in the Jordaan’s quieter cousin by midday.</p><h4>Friday afternoon · Amsterdam, fifteen minutes away</h4><p>Straight in on the train. <i class="k e"></i><strong>Van Stapele</strong> first — one warm chocolate cookie, it’s all they make, and they sell out. Then the <i class="k s"></i><strong>Nine Streets</strong> and the Jordaan canals on foot, <i class="k e"></i><strong>Fabel Friet</strong> and <i class="k e"></i><strong>Miuz Gelato</strong> when you need them.</p><p>Then <strong>hire bikes</strong> and ride <i class="k o"></i><strong>Vondelpark</strong> end to end, past the <i class="k a"></i><strong>Rijksmuseum</strong> — the cycle passage straight through the middle of the building is public and free, and it’s the best thing about it — and the <i class="k a"></i><strong>Van Gogh</strong> and <i class="k a"></i><strong>Stedelijk</strong> exteriors across the lawn.</p><h4>Friday evening · the water</h4><p>Early dinner at <i class="k e"></i><strong>Cannibale Royale</strong>, then a <i class="k o"></i><strong>sunset canal cruise at 19:00</strong> — sunset is about 19:20, so ninety minutes covers all of it. <strong>Small open boat, not a glass-top:</strong> twelve to twenty people, a skipper who talks, your own drinks, and the narrow canals the big boats can’t enter. Board on the Prinsengracht. Trains back to Haarlem run four an hour, late.</p><h4>Saturday morning · Haarlem’s own market</h4><p>Saturday is market day on the <i class="k s"></i><strong>Grote Markt</strong> under the Grote Kerk, four minutes from your door — flowers, cheese, bread, almost entirely locals. Walk the hofjes afterwards: small almshouse courtyards you push a door and walk into, free, scattered all over the old town.</p><h4>Saturday afternoon · one more, or none</h4><p>Back into Amsterdam for the <i class="k o"></i><strong>free IJ ferry</strong> behind Centraal — five minutes, no ticket — to the <i class="k a"></i><strong>Eye Filmmuseum</strong> terrace with the city across the water. Or <i class="k a"></i><strong>Het Schip</strong> in the Spaarndammerbuurt, de Klerk’s 1919 workers’ housing, which reads completely from the street. Or the <i class="k s"></i><strong>Noordermarkt</strong> flea market and <i class="k e"></i><strong>Winkel 43</strong>’s apple pie on the same square.</p><p>Or none of it, and a last walk along the Spaarne.</p><h4>Saturday evening</h4><p>Collect the bags. Haarlem to Schiphol is 30 minutes direct, several an hour. Check-in opens 18:30, EK150 departs 22:00.</p><div class="tonight"><b>Fri night · Haarlem</b>One night only now, so pay for location: near the Grote Markt or the station. Entire place, target €180.<div class="links"><a href="https://www.airbnb.com/s/Haarlem--Netherlands/homes?checkin=2026-09-25&checkout=2026-09-26&adults=2&price_min=130&price_max=230&room_types%5B%5D=Entire%20home%2Fapt&guest_favorite=true&selected_filter_order%5B%5D=room_types%3AEntire%20home%2Fapt&selected_filter_order%5B%5D=guest_favorite%3Atrue&update_selected_filters=true">Airbnb 25–26 Sep</a><a href="https://www.booking.com/searchresults.html?ss=Haarlem&checkin=2026-09-25&checkout=2026-09-26&group_adults=2&no_rooms=1">Hotels</a></div>Sat night is in the air — Dubai 07:40, Sydney 06:05 Monday the 28th.</div></div></details></div>
+
+  </div>
+</section>
+
+<section class="budget">
+  <div class="block-head" style="--accent:var(--gold)"><h2>What it costs</h2><p>Ceiling $11,000 · two people</p></div>
+  <p class="block-note">Rough AUD. Dropping museum entries saves about 450 and pays for the second car hire.</p>
+  <div class="btable">
+    <div class="brow head"><span>Line</span><span>AUD</span></div>
+    <div class="brow paid"><span>Flights — already paid</span><span>4,830</span></div>
+    <div class="brow"><span>7 nights: Mosel, Metz, Utrecht ×3, Groningen, Haarlem (7 free)</span><span>1,800</span></div>
+    <div class="brow"><span>Car — Antwerp out and back, 7 days, no drop fee</span><span>950</span></div>
+    <div class="brow"><span>Trains and local transport</span><span>500</span></div>
+    <div class="brow"><span>Food and drink, 14 days</span><span>2,400</span></div>
+    <div class="brow"><span>Efteling ×2, boats, bikes, chairlift, treetop walk</span><span>530</span></div>
+    <div class="brow total"><span>Total</span><span>11,010</span></div>
+  </div>
+  <p class="block-note" style="margin-top:14px">About <strong>190 over</strong>. Two clean levers: hold Haarlem to €150/night rather than 180 (saves ~100), and take the Mosel night at €120 rather than 150 (~50). Do both and you're under. The expensive structural choice is <strong>two separate car hires</strong> — that's what the Metz trip costs, and there's no way around it while the Dutch leg starts from Utrecht.</p>
+</section>
+
+<section class="stays">
+  <div class="block-head" style="--accent:var(--gold)"><h2>Where you sleep</h2><p>7 nights to book · 7 free · never Amsterdam</p></div>
+  <p class="block-note">Every link opens on entire places only, with a floor, a ceiling and the Guest Favourite filter on. Check the chips show "Entire home" and "Guest favourites", then sort by Top rated.</p>
+
+  <div class="stay"><h3><i class="k h"></i>12–18 &amp; 24–25 Sep · Antwerp · 7 nights · free</h3>
+    <p class="pick">The flat</p>
+    <p>Six nights at the front, then one more on the 24th when you bring the car back and say goodbye. Confirm <strong>both</strong> blocks in writing before booking anything else — the whole budget rests on them.</p></div>
+
+  <div class="stay"><h3><i class="k h"></i>18–19 Sep · Beilstein or Cochem · 1 night · target €150</h3>
+    <p class="pick">A room over the Mosel</p>
+    <p>Beilstein has perhaps a hundred beds and you're arriving mid-harvest. Book first. Cochem is bigger and fifteen minutes away if it's gone.</p></div>
+
+  <div class="stay"><h3><i class="k h"></i>19–20 Sep · Metz · 1 night · target €140</h3>
+    <p class="pick">Near Place Saint-Louis</p>
+    <p>Filter for parking — the old centre is pedestrianised and you'll have the car.</p></div>
+
+  <div class="stay"><h3><i class="k h"></i>20–23 Sep · Utrecht · 3 nights · target €160</h3>
+    <p class="pick">Central, near the Oudegracht</p>
+    <p>Three nights without moving — the calmest stretch of the trip. You’ll have the car the whole time, so parking or a nearby garage is essential; Utrecht’s centre is largely car-free.</p></div>
+
+  <div class="stay"><h3><i class="k h"></i>23–24 Sep · Groningen · 1 night · target €140</h3>
+    <p class="pick">Inside the canal ring</p>
+    <p>Cheapest good night on the route. You're here for a sunset and a breakfast.</p></div>
+
+  <div class="stay"><h3><i class="k h"></i>25–26 Sep · Haarlem · 1 night · target €180</h3>
+    <p class="pick">Near the Grote Markt or the Spaarne</p>
+    <p>Amsterdam at 15 minutes, Schiphol at 30, roughly two-thirds the Amsterdam rate. One night only now, so walkable to the station matters more than anything else.</p></div>
+</section>
+
+<section class="book">
+  <h2>Book or check</h2>
+  <p>Top of the list is most urgent · ticks save on this device</p>
+  <div id="tasks"></div>
+  <p class="saved" id="saved"></p>
+</section>
+
+<footer>
+  No museum entries · no seafood · no Amsterdam nights.<br>
+  Times approximate — re-check closer to the date.
+</footer>
+
+</div>
+
+<script>
+const NIGHTS=[
+ {d:"12",p:"Antwerp",c:"#2B4BF2",n:1,id:"d1"},{d:"13",p:"Antwerp",c:"#2B4BF2",id:"d2"},
+ {d:"14",p:"Antwerp",c:"#2B4BF2",id:"d3"},{d:"15",p:"Antwerp",c:"#2B4BF2",id:"d4"},
+ {d:"16",p:"Antwerp",c:"#2B4BF2",id:"d5"},{d:"17",p:"Antwerp",c:"#2B4BF2",id:"d6"},
+ {d:"18",p:"Mosel",c:"#FF4A26",n:1,id:"d7"},{d:"19",p:"Metz",c:"#FF4A26",n:1,id:"d8"},
+ {d:"20",p:"Utrecht",c:"#FF4A26",n:1,id:"d9"},
+ {d:"21",p:"Utrecht",c:"#FF4A26",id:"d10"},{d:"22",p:"Utrecht · Efteling",c:"#FF4A26",id:"d11"},
+ {d:"23",p:"Groningen",c:"#FF4A26",n:1,id:"d12"},
+ {d:"24",p:"Antwerp",c:"#2B4BF2",n:1,id:"d13"},{d:"25",p:"Haarlem",c:"#00A37A",n:1,id:"d14"}
+];
+const strip=document.getElementById('strip');
+NIGHTS.forEach(o=>{
+  const b=document.createElement('button');
+  b.className='night'+(o.n?' new':'');
+  b.style.setProperty('--c',o.c); b.textContent=o.d; b.title=o.p;
+  b.setAttribute('aria-label',`Night of ${o.d} September, ${o.p}`);
+  b.onclick=()=>{const t=document.getElementById(o.id); if(t){t.open=true;t.scrollIntoView({block:'center'});}};
+  strip.appendChild(b);
+});
+
+const TASKS=[
+ ["G","Do this week","Prices climb or stock runs out"],
+ ["Confirm the free Antwerp flat","12–18 and 24–25 Sep · in writing · 7 free nights, the whole budget rests on it"],
+ ["Efteling tickets, Tue 22","dynamic pricing — the fare only rises as the date fills. Book direct."],
+ ["Mosel night, 18–19 Sep","Beilstein has ~100 beds and it is harvest week"],
+ ["Hire car, Antwerp Fri 18 → Antwerp Thu 24","7 days, same-city return · ask for the German low-emission sticker"],
+
+ ["G","By Thursday 20 August","One-off, fixed date"],
+ ["Open Monumentendag programme","live 20 Aug, 11:00 — then reserve the free Bourla tour"],
+
+ ["G","Next few weeks","Rooms, in date order"],
+ ["Metz, 19–20 Sep","filter for parking — the old centre is pedestrianised"],
+ ["Utrecht, 20–23 Sep","3 nights, one bed · parking essential, you keep the car"],
+ ["Groningen, 23–24 Sep","cheapest good night on the route"],
+ ["Haarlem, 25–26 Sep","one night · walkable to the station matters most"],
+
+ ["G","A month out","Tables and boats that fill"],
+ ["Giethoorn whisper boat, Wed 23","self-drive, no licence · 2 hours"],
+ ["Hans & Grietje, Zeewolde, Wed 23","book a table, arrive before 11:00"],
+ ["Sunset canal cruise, Fri 25","19:00 · small open boat, not a glass-top"],
+ ["Mémé Gusta, Ghent, Wed 16","fills every night"],
+ ["Black Smoke Rotterdam, Thu 17","inside the Van Nelle Fabriek, from 17:00"],
+
+ ["G","Check, don't book","Free or walk-up — just confirm before you go"],
+ ["Kasteel de Haar, Mon 21","gardens ticket · interior shut in September for the family"],
+ ["Bruder Klaus, Fri 18","free · closed Mondays, season ends 1 Oct · 15-min walk from the car park"],
+ ["Saarschleife treetop walk, Sat 19","open daily to 31 Oct · windproof layers"],
+ ["Bruges and Ghent canal boats","walk-up — but check the last sailing times"]
+];
+const box=document.getElementById('tasks'), saved=document.getElementById('saved');
+TASKS.forEach((t,i)=>{
+  if(t[0]==="G"){
+    const h=document.createElement('p'); h.className='tgroup';
+    h.innerHTML=`${t[1]}<em>${t[2]}</em>`; box.appendChild(h); return;
+  }
+  const row=document.createElement('div'); row.className='task';
+  row.innerHTML=`<input type="checkbox" id="t${i}"><label for="t${i}">${t[0]}<i>${t[1]}</i></label>`;
+  box.appendChild(row);
+});
+const inputs=[...box.querySelectorAll('input')];
+async function load(){
+  try{const r=await window.storage.get('trip-ticks-v4');const v=JSON.parse(r.value);
+    inputs.forEach((el,i)=>el.checked=!!v[i]); saved.textContent='Loaded your saved ticks.';
+  }catch(e){ saved.textContent='Nothing saved yet.'; }
+}
+async function save(){
+  try{await window.storage.set('trip-ticks-v4',JSON.stringify(inputs.map(el=>el.checked)));
+    saved.textContent='Saved.';
+  }catch(e){ saved.textContent="Couldn't save — ticks will reset on reload."; }
+}
+inputs.forEach(el=>el.addEventListener('change',save));
+if(window.storage) load(); else saved.textContent='Ticks won\u2019t save here.';
+
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  const io=new IntersectionObserver(es=>es.forEach(e=>{
+    if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}
+  }),{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(n=>io.observe(n));
+}else{document.querySelectorAll('.reveal').forEach(n=>n.classList.add('in'));}
+</script>
+</body>
+</html>
