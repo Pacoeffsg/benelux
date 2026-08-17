@@ -61,6 +61,8 @@ h1 em{font-style:normal;color:var(--vermilion)}
 .map .stop circle{fill:var(--paper);stroke:var(--ink);stroke-width:2}
 .map .bed circle{stroke:#fff;stroke-width:2.5}
 .map .lbl text{font-family:var(--mono);font-size:10.5px;fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3.5px;stroke-linejoin:round}
+.map .ctry text{font-family:var(--mono);font-size:9px;letter-spacing:.22em;fill:#A7A2CE;
+  paint-order:stroke;stroke:var(--card);stroke-width:3px;stroke-linejoin:round}
 .map .lbl text.big{font-family:var(--display);font-weight:800;font-size:13.5px}
 .legend{display:flex;flex-wrap:wrap;gap:12px 16px;font-family:var(--mono);font-size:11px;color:var(--dim);margin:0 0 40px}
 .block{margin:52px 0 0}
@@ -185,7 +187,18 @@ details[open] .chev{transform:rotate(90deg)}
 
   <div class="strip-label"><h2>The route</h2><span>large dot = you sleep there</span></div>
   <figure class="map">
-  <svg viewBox="0 0 340 450" role="img" aria-label="Schematic route map. Antwerp is the base, with dashed train day trips to Rotterdam, Ghent, and a combined Bruges and Brussels loop. A red car route runs south to the Bruder Klaus chapel, Trier and two nights in Metz, with a day loop out to the Saar, then north to Utrecht, with spurs to Kasteel de Haar, Houten and the Bolwoningen. From Utrecht the car continues to Zeewolde, Giethoorn, Groningen and Zaanse Schans before returning to Antwerp. A green train line runs Antwerp to Haarlem, with Amsterdam fifteen minutes away.">
+  <svg viewBox="0 0 340 468" role="img" aria-label="Schematic route map. Antwerp is the base, with dashed train day trips to Rotterdam, Ghent, and a combined Bruges and Brussels loop. A red car route runs south to the Bruder Klaus chapel, Trier and two nights in Metz, with a day loop out to the Saar, then north to Utrecht, with spurs to Kasteel de Haar, Houten and the Bolwoningen. From Utrecht the car continues to Zeewolde, Giethoorn, Groningen and Zaanse Schans before returning to Antwerp. A green train line runs Antwerp to Haarlem, with Amsterdam fifteen minutes away.">
+    <g class="border" fill="none" stroke="#A7A2CE" stroke-width="1.6" stroke-dasharray="2 5" stroke-linejoin="round">
+      <path d="M0 262 L62 256 L124 268 L186 261 L250 254 L272 214 L282 166 L302 108 L340 58"/>
+      <path d="M250 254 L216 288 L192 320 L170 358 L138 392 L96 414 L40 430"/>
+      <path d="M192 320 L214 366 L240 412 L264 468"/>
+    </g>
+    <g class="ctry">
+      <text x="150" y="234">NETHERLANDS</text>
+      <text x="66" y="372">BELGIUM</text>
+      <text x="298" y="298" text-anchor="end">GERMANY</text>
+      <text x="168" y="452" text-anchor="end">FRANCE</text>
+    </g>
     <g fill="none" stroke-linecap="round" stroke-linejoin="round">
       <!-- flights -->
       <path d="M132 140 Q162 218 110 292" stroke="#FFC531" stroke-width="2.5" stroke-dasharray="1 6"/>
@@ -230,8 +243,8 @@ details[open] .chev{transform:rotate(90deg)}
       <text x="241" y="254">Bolwoningen</text>
       <text x="76" y="212" text-anchor="end">Rotterdam</text>
       <text x="119" y="296" class="big">ANTWERP · 7</text>
-      <text x="24" y="269" text-anchor="end">Bruges</text>
-      <text x="34" y="326" text-anchor="end">Ghent</text>
+      <text x="32" y="262" text-anchor="middle">Bruges</text>
+      <text x="42" y="341" text-anchor="middle">Ghent</text>
       <text x="112" y="359" text-anchor="middle">Brussels</text>
       <text x="248" y="341">Bruder Klaus</text>
       <text x="292" y="411">Saar loop</text>
@@ -245,7 +258,7 @@ details[open] .chev{transform:rotate(90deg)}
     <span><i style="background:#2B4BF2"></i>Trains from Antwerp</span>
     <span><i style="background:#FF4A26"></i>Car</span>
     <span><i style="background:#00A37A"></i>Trains</span>
-    <span>Dashed = out and back same day.</span><span>Big dot + number = nights slept there.</span>
+    <span>Dashed = out and back same day.</span><span>Big dot + number = nights slept there.</span><span>Grey dashes = country borders, indicative only.</span>
   </div>
 
   <div class="strip-label"><h2>How to read a day</h2><span>markers, not jargon</span></div>
